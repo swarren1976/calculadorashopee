@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Preço de Venda</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #4a90e2, #f56a79);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+
+        .container {
+            background-color: #ffffff10;
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: block;
+            text-align: left;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #f56a79;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e14b5a;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Preço de Venda</h1>
+
+        <label for="custo">Custo do Produto:</label>
+        <input type="number" id="custo" placeholder="Digite o custo do produto" min="0">
+
+        <label for="margem">Margem de Lucro Desejada:</label>
+        <input type="number" id="margem" placeholder="Digite a margem de lucro desejada" min="0">
+
+        <button onclick="calcularPreco()">Calcular Preço de Venda</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularPreco() {
+            var custo = parseFloat(document.getElementById('custo').value);
+            var margem = parseFloat(document.getElementById('margem').value);
+
+            if (isNaN(custo) || isNaN(margem)) {
+                document.getElementById('resultado').innerHTML = 'Por favor, insira valores válidos.';
+                return;
+            }
+
+            var precoVenda = (custo + margem + 4) / 0.80;
+            document.getElementById('resultado').innerHTML = 'O preço de venda deve ser: R$ ' + precoVenda.toFixed(2);
+        }
+    </script>
+</body>
+</html>
